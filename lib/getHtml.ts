@@ -1,7 +1,7 @@
-import puppeteer from 'puppeteer'
+import chromium from 'chrome-aws-lambda'
 
 const getHtml = async (url: string) => {
-  const browser = await puppeteer.launch()
+  const browser = await chromium.puppeteer.launch()
   const page = await browser.newPage()
 
   try {
