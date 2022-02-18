@@ -1,7 +1,13 @@
 import chromium from 'chrome-aws-lambda'
 
 const getHtml = async (url: string) => {
-  const browser = await chromium.puppeteer.launch()
+  const browser = await chromium.puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: chromium.headless,
+    ignoreHTTPSErrors: true,
+  })
   const page = await browser.newPage()
 
   try {
